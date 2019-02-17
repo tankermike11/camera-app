@@ -11,7 +11,9 @@ html, body{
     object-fit: cover;
 }
 #camera--view, #camera--sensor, #camera--output{
-
+    transform: scale(-1, 1);
+        /*For Firefox (& IE) */
+    -webkit-transform: scale(-1, 1);
 }
 #camera--trigger{
     width: 200px;
