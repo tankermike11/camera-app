@@ -1,5 +1,6 @@
 // Set constraints for the video stream
-var constraints = { video: { facingMode: {exact: "environment" } }, audio: false };
+var constraints = { video: { facingMode: { exact: 'environment' } }, audio: false };
+
 
 // Define constants
 const cameraView = document.querySelector("#camera--view"),
@@ -8,13 +9,12 @@ const cameraView = document.querySelector("#camera--view"),
     cameraTrigger = document.querySelector("#camera--trigger")
 // Access the device camera and stream to cameraView
 function cameraStart() {
-navigator.mediaDevices.getUserMedia({
-  video: {
-    facingMode: {
-      exact: 'environment'
-      }
-    }
-  })
+    navigator.mediaDevices
+        .getUserMedia(constraints)
+        .then(function(stream) {
+        track = stream.getTracks()[0];
+        cameraView.srcObject = stream;
+    })
     .catch(function(error) {
         console.error("Oops. Something is broken.", error);
     });
